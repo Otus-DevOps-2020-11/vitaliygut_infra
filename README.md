@@ -29,6 +29,24 @@ ForwardAgent yes
 	ProxyJump bastion
 
 После запуска vpn сервера в логах были ошибки связанные с неудачной попыткой добыить правила в iptables, дополнително установил iptable и рестрарт службы pritunl
-SSL
 
+SSL
 В настройках сервера указал домен  pritunl.178.154.227.202.sslip.io
+
+HW4
+=========================================
+
+testapp_IP = 130.193.37.11
+testapp_port = 9292
+
+Используйте созданные ранее скрипты для
+создания startup script, который будет запускаться при создании инстанса:
+
+yc compute instance create \
+--name reddit-app2 \
+--hostname reddit-app2 \
+--memory=4 \
+--create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB \
+--network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
+--metadata-from-file user-data=metadata.yaml \
+--metadata serial-port-enable=1
